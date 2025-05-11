@@ -4,7 +4,7 @@ import Logger from '@novice1/logger'
 import { ParsedQs } from 'qs';
 import { ParamsDictionary } from 'express-serve-static-core'
 import { IncomingHttpHeaders } from 'http';
-import Zod, { core, ZodType } from 'zod'
+import Zod, { core, ZodObject, ZodType } from 'zod'
 
 const Log = Logger.debugger('@novice1/validator-zod');
 const PARAMETERS_PROPS = ['params', 'body', 'query', 'headers', 'cookies', 'files'];
@@ -120,7 +120,7 @@ function buildValueToValidate(schema: ZodType, req: Request): ValidationObject {
     return r;
 }
 
-export type ValidatorZodSchema = ZodType | {
+export type ValidatorZodSchema = ZodObject | {
     body?: ZodType | { [x: string]: ZodType }
     headers?: ZodType | { [x: string]: ZodType }
     cookies?: ZodType | { [x: string]: ZodType }
