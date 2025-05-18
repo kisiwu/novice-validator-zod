@@ -4,7 +4,7 @@ import Logger from '@novice1/logger'
 import { ParsedQs } from 'qs';
 import { ParamsDictionary } from 'express-serve-static-core'
 import { IncomingHttpHeaders } from 'http';
-import Zod, { core, ZodObject, ZodType } from 'zod'
+import Zod, { core, ZodObject, ZodType } from 'zod/v4'
 
 const Log = Logger.debugger('@novice1/validator-zod');
 const PARAMETERS_PROPS = ['params', 'body', 'query', 'headers', 'cookies', 'files'];
@@ -148,7 +148,7 @@ export function validatorZod(
     onerror?: ErrorRequestHandler,
     schemaProperty?: string
 ): RequestHandler {
-    return function validatorZodRequestHandler(req, res, next) {
+    return async function validatorZodRequestHandler(req, res, next) {
         const schema = retrieveSchema(req.meta?.parameters, schemaProperty);
         if (!schema) {
             Log.silly('no schema to validate');
