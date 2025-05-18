@@ -10,6 +10,14 @@ It provides a middleware that can validate `req.params`, `req.body`, `req.query`
 npm install @novice1/validator-zod
 ```
 
+### Requirements
+
+Zod4
+
+```bash
+npm install zod@next
+```
+
 ## Usage
 
 ### Set validator
@@ -41,7 +49,7 @@ router.setValidators(
 ```ts
 // schema.ts
 
-import z from 'zod'
+import { z } from 'zod/v4'
 import { ValidatorZodSchema } from '@novice1/validator-zod'
 import router from './router'
 
@@ -131,3 +139,8 @@ router.get(
   }
 )
 ```
+
+## References
+
+- [Zod 4](https://v4.zod.dev/v4)
+- [@novice1/routing](https://www.npmjs.com/package/@novice1/routing)
